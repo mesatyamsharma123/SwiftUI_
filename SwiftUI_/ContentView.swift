@@ -8,16 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var bol : Bool = false
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
             Text("Hello, world!")
                 .font(.system(size:20,weight: .heavy)
                       )
+            
+            Count(){
+                bol.toggle()
+            }
+         
+            if bol {
+                Text("yeh hui naa baat")
+            }
         }
+        
         .padding()
+        .frame(maxWidth: .infinity, maxHeight: .infinity,alignment: .topLeading )
     }
 }
 
