@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
     @State var bol : Bool = false
+    @StateObject var vm = ViewModel()
+    @State var ans = ""
     var body: some View {
         VStack(alignment: .leading) {
             Image(systemName: "globe")
@@ -21,14 +23,27 @@ struct ContentView: View {
             Count(){
                 bol.toggle()
             }
+            
          
             if bol {
                 Text("yeh hui naa baat")
             }
+            Text(ans)
+               
+                
         }
         
         .padding()
         .frame(maxWidth: .infinity, maxHeight: .infinity,alignment: .topLeading )
+        .onChange(of: bol) { _ ,newVale in
+            
+            if newVale {
+                vm.FetchData { result in
+                    ans = result
+                    
+                }
+            }
+        }
     }
 }
 
