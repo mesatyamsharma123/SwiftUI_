@@ -10,35 +10,38 @@ import SwiftUI
 struct HomesViews: View {
     
     @State private var path = NavigationPath()
-//    ["expertList"] 
+//    ["expertList"]
     var body: some View {
         NavigationStack(path:$path) {
-            
-            VStack{
-                Button {
+            ZStack {
+                LinearGradient(colors: [.blue], startPoint: .top, endPoint: .bottom)
+                    .ignoresSafeArea()
+                VStack{
+                    Button {
+                        
+                        path.append("expertList")
+                        print("Button tab")
+                    }
+                    label : {
+                        Text("ExpertList")
+                    }
+                    .buttonStyle(.glass)
                     
-                    path.append("expertList")
-                    print("Button tab")
+                    //            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
                 }
-                label : {
-                    Text("ExpertList")
-                }
-                .buttonStyle(.glass)
-                
-                //            Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-            }
-            .navigationDestination(for: String.self) { route in
-                if route == "home" {
-                    HomesViews()
-                }
-                if route == "expertList" {
-                    ExpertList(path: $path)
-                }
-                if route == "expertDetail" {
-                    ExpertDetailView(path:$path)
-                }
-                if route == "gallery" {
-                    GalleryView(path: $path )
+                .navigationDestination(for: String.self) { route in
+                    if route == "home" {
+                        HomesViews()
+                    }
+                    if route == "expertList" {
+                        ExpertList(path: $path)
+                    }
+                    if route == "expertDetail" {
+                        ExpertDetailView(path:$path)
+                    }
+                    if route == "gallery" {
+                        GalleryView(path: $path )
+                    }
                 }
             }
         }

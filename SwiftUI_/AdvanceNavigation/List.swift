@@ -16,6 +16,15 @@ struct Lists: View {
             print("ds")
         }
         .buttonStyle(.glass)
+        .toolbar {
+            ToolbarItem(placement: .principal) {
+                Text("Yeh")
+            }
+           
+            
+        }
+        .toolbarBackground(.blue, for: .navigationBar)
+        .toolbarBackground(.visible, for: .navigationBar)
     }
 }
 

@@ -12,28 +12,31 @@ struct MainTabContainer: View {
     @State var selection: Int = 0
     var body: some View {
         
-        TabView(selection: $selection) {
+
             
+            
+            TabView(selection: $selection) {
+                
                 HomesViews()
                     .tabItem {
                         Label("Home", systemImage: "house")
                     }
                     .tag(0)
-            
-         
-                ContactView()
+                
+                
+                ContactView(selection: $selection)
                     .tabItem {
                         Label("Contact",systemImage: "phone")
                     }
                     .tag(1)
-   
-//            GalleryView(path: <#Binding<NavigationPath?>#>)
-//                    .tabItem {
-//                        Label("Gallery",systemImage: "photo")
-//                    }
-//                    .tag(2)
-            
-        }
+                
+                //            GalleryView(path: <#Binding<NavigationPath?>#>)
+                //                    .tabItem {
+                //                        Label("Gallery",systemImage: "photo")
+                //                    }
+                //                    .tag(2)
+                
+            }
         
     }
 }
